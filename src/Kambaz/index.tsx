@@ -7,6 +7,7 @@ import Courses from "./Courses";
 export default function Kambaz() {
   return (
     <div id="wd-kambaz">
+        <h2>Jaimin Sharadbhai Savaliya CS5610</h2>
       <table>
         <tr>
           <td valign="top">
