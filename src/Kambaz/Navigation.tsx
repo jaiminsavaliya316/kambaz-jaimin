@@ -35,7 +35,7 @@ export default function KambazNavigation() {
        className="d-flex flex-column align-items-center text-white bg-black border-0">
        <FaInbox className="fs-1 text-danger " />
        Inbox </ListGroup.Item>
-    <ListGroup.Item to="/Kambaz/Labs" as={Link}
+    <ListGroup.Item to="/Labs" as={Link}
        className="d-flex flex-column align-items-center text-white bg-black border-0">
        <LiaCogSolid className="fs-1 text-danger" />
        Labs </ListGroup.Item>
