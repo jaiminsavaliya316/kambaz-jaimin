@@ -1,7 +1,7 @@
 import { InputGroup, FormControl, Button, ListGroup } from 'react-bootstrap';
 import { CiMenuKebab } from 'react-icons/ci';
 import { FaSearch, FaPlus, FaCheckCircle } from 'react-icons/fa';
-import { FaGripVertical } from 'react-icons/fa6';
+import { FaChevronDown, FaGripVertical } from 'react-icons/fa6';
 import { LuNotebookPen } from 'react-icons/lu';
 
 export default function Assignments() {
@@ -11,7 +11,7 @@ export default function Assignments() {
         <InputGroup className="w-50">
           <InputGroup.Text><FaSearch /></InputGroup.Text>
           <FormControl
-            placeholder="Search for Assignments"
+            placeholder="Search..."
             aria-label="Search for Assignments"
             id="wd-search-assignment"
           />
@@ -26,84 +26,98 @@ export default function Assignments() {
         </div>
       </div>
 
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h3 className="mb-0">ASSIGNMENTS</h3>
-        <span className="text-muted">40% of Total</span>
-        <Button variant="link" className="p-0">
+      <div className="d-flex align-items-center mb-3">
+        <div className="d-flex align-items-center me-auto">
+          <FaGripVertical className="text-secondary me-2" />
+          <FaChevronDown className="text-secondary me-2" />
+          <span className="fw-bold">ASSIGNMENTS</span>
+        </div>
+
+        <Button variant="outline-secondary" size="sm" className="rounded-pill me-2"> 
+          40% of Total
+        </Button>
+
+        <Button variant="link" className="p-2 text-secondary">
           <FaPlus />
+        </Button>
+
+        <Button variant="link" className="p-2 text-secondary">
+          <CiMenuKebab />
         </Button>
       </div>
 
+      
 
-    <ListGroup as="ul" variant="flush">
-      <ListGroup.Item
-        as="li"
-        className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
-      >
-        <div className="d-flex align-items-center me-3">
-          <FaGripVertical className="text-secondary" />
-          <LuNotebookPen className="text-success ms-2" />
-        </div>
-        <div className="flex-grow-1">
-          <div className="fw-bold">A1</div>
-          <div className="small text-muted ps-1">
-            <span className="text-success">Multiple Modules</span> |{' '}
-            <strong>Not available until</strong> May 6 at 12:00am<br/>
-            <strong>Due</strong> May 13 at 11:59pm | 100 pts
+
+      <ListGroup as="ul" variant="flush">
+        <ListGroup.Item
+          as="li"
+          className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
+        >
+          <div className="d-flex align-items-center me-3">
+            <FaGripVertical className="text-secondary" />
+            <LuNotebookPen className="text-success ms-2" />
           </div>
-        </div>
-        <div className="d-flex align-items-center">
-          <FaCheckCircle className="text-success me-3" />
-          <CiMenuKebab className="text-muted" />
-        </div>
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        as="li"
-        className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
-      >
-        <div className="d-flex align-items-center me-3">
-          <FaGripVertical className="text-secondary" />
-          <LuNotebookPen className="text-success ms-2" />
-        </div>
-        <div className="flex-grow-1">
-          <div className="fw-bold">A2</div>  
-          <div className="small text-muted ps-1">
-            <span className="text-success">Multiple Modules</span> |{' '}
-            <strong>Not available until</strong> May 13 at 12:00am<br/>
-            <strong>Due</strong> May 20 at 11:59pm | 100 pts
+          <div className="flex-grow-1">
+            <div className="fw-bold">A1</div>
+            <div className="small text-muted ps-1">
+              <span className="text-danger">Multiple Modules</span> |{' '}
+              <strong>Not available until</strong> May 6 at 12:00am<br/>
+              <strong>Due</strong> May 13 at 11:59pm | 100 pts
+            </div>
           </div>
-        </div>
-        <div className="d-flex align-items-center">
-          <FaCheckCircle className="text-success me-3" />
-          <CiMenuKebab className="text-muted" />
-        </div>
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        as="li"
-        className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
-      >
-        <div className="d-flex align-items-center me-3">
-          <FaGripVertical className="text-secondary" />
-          <LuNotebookPen className="text-success ms-2" />
-        </div>
-        <div className="flex-grow-1">
-          <div className="fw-bold">A3</div>
-          <div className="small text-muted ps-1">
-            <span className="text-success">Multiple Modules</span> |{' '}
-            <strong>Not available until</strong> May 20 at 12:00am<br/>
-            <strong>Due</strong> May 27 at 11:59pm | 100 pts
+          <div className="d-flex align-items-center">
+            <FaCheckCircle className="text-success me-3" />
+            <CiMenuKebab className="text-muted" />
           </div>
-        </div>
-        <div className="d-flex align-items-center">
-          <FaCheckCircle className="text-success me-3" />
-          <CiMenuKebab className="text-muted" />
-        </div>
-      </ListGroup.Item>
+        </ListGroup.Item>
+
+        <ListGroup.Item
+          as="li"
+          className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
+        >
+          <div className="d-flex align-items-center me-3">
+            <FaGripVertical className="text-secondary" />
+            <LuNotebookPen className="text-success ms-2" />
+          </div>
+          <div className="flex-grow-1">
+            <div className="fw-bold">A2</div>  
+            <div className="small text-muted ps-1">
+              <span className="text-danger">Multiple Modules</span> |{' '}
+              <strong>Not available until</strong> May 13 at 12:00am<br/>
+              <strong>Due</strong> May 20 at 11:59pm | 100 pts
+            </div>
+          </div>
+          <div className="d-flex align-items-center">
+            <FaCheckCircle className="text-success me-3" />
+            <CiMenuKebab className="text-muted" />
+          </div>
+        </ListGroup.Item>
+
+        <ListGroup.Item
+          as="li"
+          className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
+        >
+          <div className="d-flex align-items-center me-3">
+            <FaGripVertical className="text-secondary" />
+            <LuNotebookPen className="text-success ms-2" />
+          </div>
+          <div className="flex-grow-1">
+            <div className="fw-bold">A3</div>
+            <div className="small text-muted ps-1">
+              <span className="text-danger">Multiple Modules</span> |{' '}
+              <strong>Not available until</strong> May 20 at 12:00am<br/>
+              <strong>Due</strong> May 27 at 11:59pm | 100 pts
+            </div>
+          </div>
+          <div className="d-flex align-items-center">
+            <FaCheckCircle className="text-success me-3" />
+            <CiMenuKebab className="text-muted" />
+          </div>
+        </ListGroup.Item>
 
 
-    </ListGroup>
+      </ListGroup>
     </div>
   );
 }
