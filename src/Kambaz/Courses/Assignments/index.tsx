@@ -59,7 +59,9 @@ export default function Assignments() {
             <LuNotebookPen className="text-success ms-2" />
           </div>
           <div className="flex-grow-1">
-            <div className="fw-bold">A1</div>
+            <div className="fw-bold ps-1"> <a href="#/Kambaz/Courses/1234/Assignments/123"
+             className="wd-assignment-link text-black text-decoration-none" >
+            A1</a></div>
             <div className="small text-muted ps-1">
               <span className="text-danger">Multiple Modules</span> |{' '}
               <strong>Not available until</strong> May 6 at 12:00am<br/>
@@ -81,7 +83,8 @@ export default function Assignments() {
             <LuNotebookPen className="text-success ms-2" />
           </div>
           <div className="flex-grow-1">
-            <div className="fw-bold">A2</div>  
+            <div className="fw-bold ps-1"><a href="#/Kambaz/Courses/1234/Assignments/123"
+             className="wd-assignment-link text-black text-decoration-none" >A2</a></div>  
             <div className="small text-muted ps-1">
               <span className="text-danger">Multiple Modules</span> |{' '}
               <strong>Not available until</strong> May 13 at 12:00am<br/>
@@ -103,7 +106,8 @@ export default function Assignments() {
             <LuNotebookPen className="text-success ms-2" />
           </div>
           <div className="flex-grow-1">
-            <div className="fw-bold">A3</div>
+            <div className="fw-bold ps-1"><a href="#/Kambaz/Courses/1234/Assignments/123"
+             className="wd-assignment-link text-black text-decoration-none" >A3</a></div>
             <div className="small text-muted ps-1">
               <span className="text-danger">Multiple Modules</span> |{' '}
               <strong>Not available until</strong> May 20 at 12:00am<br/>

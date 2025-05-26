@@ -1,19 +1,62 @@
-import { Link } from "react-router-dom";
+import { Form, Button, Col, Row, InputGroup } from 'react-bootstrap';
+import { FaCalendarAlt } from 'react-icons/fa';
 export default function Profile() {
   return (
     <div id="wd-profile-screen">
-      <h3>Profile</h3>
-      <input defaultValue="alice" placeholder="username" className="wd-username"/><br/>
-      <input defaultValue="123"   placeholder="password" type="password"
-             className="wd-password" /><br/>
-      <input defaultValue="Alice" placeholder="First Name" id="wd-firstname" /><br/>
-      <input defaultValue="Wonderland" placeholder="Last Name" id="wd-lastname" /><br/>
-      <input defaultValue="2000-01-01" type="date" id="wd-dob" /><br/>
-      <input defaultValue="alice@wonderland" type="email" id="wd-email" /><br/>
-      <select defaultValue="FACULTY" id="wd-role">
-        <option value="USER">User</option>       <option value="ADMIN">Admin</option>
-        <option value="FACULTY">Faculty</option> <option value="STUDENT">Student</option>
-      </select><br/>
-      <Link to="/Kambaz/Account/Signin" >Sign out</Link>
+      <h2 className="mb-3 fw-normal">Profile</h2>
+      <Form>
+        <Form.Group as={Row} className="mb-3">
+          <Col>
+            <Form.Control type="username" placeholder="alice" />
+          </Col>
+        </Form.Group>
+       
+        <Form.Group as={Row} className="mb-3">
+          <Col>
+            <Form.Control type="password" placeholder="password" />
+          </Col>
+        </Form.Group>
+
+                <Form.Group as={Row} className="mb-3">
+          <Col>
+            <Form.Control type="text" placeholder="Alice" />
+          </Col>
+        </Form.Group>        
+        <Form.Group as={Row} className="mb-3">
+          <Col>
+            <Form.Control type="text" placeholder="Wonderland" />
+          </Col>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <InputGroup>
+            <Form.Control type="datetime-local" id="wd-due-date" defaultValue="2024-05-13T23:59" />
+            <InputGroup.Text
+              onClick={() => {
+                const input = document.getElementById('wd-due-date') as HTMLInputElement;
+                input?.showPicker();
+              }}
+              >
+              <FaCalendarAlt />
+            </InputGroup.Text>
+          </InputGroup>
+        </Form.Group>        
+
+        <Form.Group as={Row} className="mb-3">
+          <Col>
+            <Form.Control type="email" placeholder="alica@wonderland.com" />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3">
+          <Col>
+            <Form.Control type="text" placeholder="Wonderland" />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3">
+          <Col>
+            <Button href="#/Kambaz/Account/Signin" id="wd-signin-btn" type="submit" className="w-100 btn btn-danger">Sign Out</Button>
+          </Col>
+        </Form.Group>        
+      </Form>
     </div>
 );}

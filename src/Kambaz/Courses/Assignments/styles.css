@@ -1,0 +1,12 @@
+.form-control[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+.form-control[type="datetime-local"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+
+/* 
+References
+Remove default datepicker icon - https://www.outsystems.com/forums/discussion/69209/change-the-icon-of-the-input-type-date/
+*/

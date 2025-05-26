@@ -1,16 +1,31 @@
-import { Link } from "react-router-dom";
-export default function Signin() {
+import { Form, Button, Col, Row } from 'react-bootstrap';
+export default function SignIn() {
   return (
-    <div id="wd-signin-screen">
-      <h3>Sign in</h3>
-      <input className="wd-username" placeholder="username" /> <br />
-      <input className="wd-password" placeholder="password" type="password" /> <br />
-      <Link id="wd-signin-btn" to="/Kambaz/Dashboard">
-        Sign in
-      </Link>
-      <br />
-      <Link id="wd-signup-link" to="/Kambaz/Account/Signup">
-        Sign up
-      </Link>
+    <div>
+      <div id="wd-signin-screen">
+        <h2 className="mb-3 fw-normal">Sign In</h2>
+        
+        <Form>
+          <Form.Group as={Row} className="mb-3">
+            <Col>
+              <Form.Control type="username" placeholder="username" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} className="mb-3">
+            <Col>
+              <Form.Control type="password" placeholder="password" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} className="mb-3">
+            <Col>
+              <Button id="wd-signin-btn" type="submit" className="w-100">Sign In</Button>
+            </Col>
+          </Form.Group>
+        </Form>
+        <a href="#/Kambaz/Account/Signup" className='text-decoration-none'>Sign Up</a>
+      </div>
     </div>
-);}
+  );
+}
