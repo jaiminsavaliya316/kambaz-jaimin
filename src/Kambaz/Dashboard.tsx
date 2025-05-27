@@ -24,7 +24,7 @@ export default function Dashboard() {
                   </Card.Body>
                 </Link>
               </Card>
-            </Col>
+            </Col> 
           ))}
         </Row>
       </div>
