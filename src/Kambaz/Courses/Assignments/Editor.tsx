@@ -1,8 +1,12 @@
 import { Form, Button, Row, Col, InputGroup } from 'react-bootstrap';
 import { FaCalendarAlt, FaTimes } from 'react-icons/fa';
+import { useParams } from "react-router";
+import * as db from "../../Database";
 import "./styles.css";
 
 export default function AssignmentEditor() {
+  const { aid } = useParams();
+  const assignment = db.assignments.find((assignment)=>(assignment._id === aid));
   return (
     <div id="wd-assignments-editor" className="p-4">
       <Form>
@@ -11,7 +15,7 @@ export default function AssignmentEditor() {
           <Form.Control
             type="text"
             id="wd-name"
-            defaultValue="A1"
+            defaultValue={assignment?.title}
           />
         </Form.Group>
 
@@ -20,15 +24,7 @@ export default function AssignmentEditor() {
             as="textarea"
             rows={6}
             id="wd-description"
-            defaultValue="The assignment is available online
-
-Submit a link to the landing page of your Web application running on Netlify.
-The landing page should include the following:
-• Your full name and section
-• Links to each of the lab assignments  
-• Link to the Kanbas application
-• Links to all relevant source code repositories
-The Kanbas application should include a link to navigate back to the landing page."
+            defaultValue={assignment?.description}
             className="border-0 bg-light"
           />
         </Form.Group>
@@ -41,7 +37,7 @@ The Kanbas application should include a link to navigate back to the landing pag
             <Form.Control
               type="number"
               id="wd-points"
-              defaultValue={100}
+              defaultValue={assignment?.points}
               style={{ maxWidth: '200px' }}
             />
           </Col>
@@ -94,37 +90,11 @@ The Kanbas application should include a link to navigate back to the landing pag
                 <strong>Online Entry Options</strong>
               </Form.Label>
               <div>
-                <Form.Check
-                  type="checkbox"
-                  id="wd-text-entry"
-                  label="Text Entry"
-                  className="mb-2"
-                />
-                <Form.Check
-                  type="checkbox"
-                  id="wd-website-url"
-                  label="Website URL"
-                  defaultChecked
-                  className="mb-2"
-                />
-                <Form.Check
-                  type="checkbox"
-                  id="wd-media-recordings"
-                  label="Media Recordings"
-                  className="mb-2"
-                />
-                <Form.Check
-                  type="checkbox"
-                  id="wd-student-annotation"
-                  label="Student Annotation"
-                  className="mb-2"
-                />
-                <Form.Check
-                  type="checkbox"
-                  id="wd-file-upload"
-                  label="File Uploads"
-                  className="mb-2"
-                />
+                <Form.Check type="checkbox" id="wd-text-entry" label="Text Entry" className="mb-2" />
+                <Form.Check type="checkbox" id="wd-website-url" label="Website URL" defaultChecked className="mb-2" />
+                <Form.Check type="checkbox" id="wd-media-recordings" label="Media Recordings" className="mb-2" />
+                <Form.Check type="checkbox" id="wd-student-annotation" label="Student Annotation" className="mb-2" />
+                <Form.Check type="checkbox" id="wd-file-upload" label="File Uploads" className="mb-2" />
               </div>
             </div>
           </Col>
@@ -150,7 +120,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                   <Form.Control
                     type="datetime-local"
                     id="wd-due-date"
-                    defaultValue="2024-05-13T23:59"
+                    defaultValue={assignment?.dueDate}
                   />
                   <InputGroup.Text 
                     className="bg-white border-start-0" 
@@ -173,7 +143,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                       <Form.Control
                         type="datetime-local"
                         id="wd-available-from"
-                        defaultValue="2024-05-06T00:00"
+                        defaultValue={assignment?.startDate}
                       />
                       <InputGroup.Text 
                         className="bg-white border-start-0" 
@@ -195,7 +165,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                       <Form.Control
                         type="datetime-local"
                         id="wd-available-until"
-                        defaultValue="2024-05-20T23:59"
+                        defaultValue={assignment?.dueDate}
                       />
                       <InputGroup.Text 
                         className="bg-white border-start-0" 

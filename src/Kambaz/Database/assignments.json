@@ -1,0 +1,11 @@
+[
+  { "_id": "A101", "points":"100", "title": "Propulsion Assignment", "course": "RS101", "startDate": "2025-05-10 00:00:00", "dueDate": "2025-05-20 23:59:59", "description": "This is the description of the assignment whose ID is A101 " },
+  { "_id": "A102", "points":"100", "title": "Combustion Analysis", "course": "RS101", "startDate": "2025-05-20 00:00:00", "dueDate": "2025-05-30 23:59:59", "description": "This is the description of the assignment whose ID is A102 " },
+  { "_id": "A103", "points":"100", "title": "Nozzle Design Project", "course": "RS101", "startDate": "2025-05-30 00:00:00", "dueDate": "2025-06-10 23:59:59", "description": "This is the description of the assignment whose ID is A103 " },
+  { "_id": "A201", "points":"100", "title": "Aerodynamics Quiz", "course": "RS102", "startDate": "2025-05-10 00:00:00", "dueDate": "2025-05-20 23:59:59", "description": "This is the description of the assignment whose ID is A201 " },
+  { "_id": "A202", "points":"100", "title": "Flow Analysis", "course": "RS102", "startDate": "2025-05-20 00:00:00", "dueDate": "2025-05-30 23:59:59", "description": "This is the description of the assignment whose ID is A202 " },
+  { "_id": "A203", "points":"100", "title": "Heating Analysis", "course": "RS102", "startDate": "2025-05-30 00:00:00", "dueDate": "2025-06-10 23:59:59", "description": "This is the description of the assignment whose ID is A203 " },
+  { "_id": "A301", "points":"100", "title": "Structural Design Task", "course": "RS103", "startDate": "2025-05-10 00:00:00", "dueDate": "2025-05-20 23:59:59", "description": "This is the description of the assignment whose ID is A301 " },
+  { "_id": "A302", "points":"100", "title": "Orbital Calculations", "course": "RS103", "startDate": "2025-05-20 00:00:00", "dueDate": "2025-05-30 23:59:59", "description": "This is the description of the assignment whose ID is A302 " },
+  { "_id": "A303", "points":"100", "title": "Systems Engineering Exam", "course": "RS103", "startDate": "2025-05-30 00:00:00", "dueDate": "2025-06-10 23:59:59", "description": "This is the description of the assignment whose ID is A303 " }
+]

@@ -3,8 +3,12 @@ import { CiMenuKebab } from 'react-icons/ci';
 import { FaSearch, FaPlus, FaCheckCircle } from 'react-icons/fa';
 import { FaChevronDown, FaGripVertical } from 'react-icons/fa6';
 import { LuNotebookPen } from 'react-icons/lu';
+import { useParams } from "react-router";
+import * as db from "../../Database";
 
 export default function Assignments() {
+  const { cid } = useParams();
+  const assignments = db.assignments;
   return (
     <div id="wd-assignments" className="p-3">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -46,81 +50,28 @@ export default function Assignments() {
         </Button>
       </div>
 
-      
-
-
       <ListGroup as="ul" variant="flush">
-        <ListGroup.Item
-          as="li"
-          className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
-        >
-          <div className="d-flex align-items-center me-3">
-            <FaGripVertical className="text-secondary" />
-            <LuNotebookPen className="text-success ms-2" />
-          </div>
-          <div className="flex-grow-1">
-            <div className="fw-bold ps-1"> <a href="#/Kambaz/Courses/1234/Assignments/123"
-             className="wd-assignment-link text-black text-decoration-none" >
-            A1</a></div>
-            <div className="small text-muted ps-1">
-              <span className="text-danger">Multiple Modules</span> |{' '}
-              <strong>Not available until</strong> May 6 at 12:00am<br/>
-              <strong>Due</strong> May 13 at 11:59pm | 100 pts
+        {assignments.filter((assignment: any) => assignment.course === cid).map((assignment: any) => (
+          <ListGroup.Item as="li" className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3">
+            <div className="d-flex align-items-center me-3">
+              <FaGripVertical className="text-secondary" />
+              <LuNotebookPen className="text-success ms-2" />
             </div>
-          </div>
-          <div className="d-flex align-items-center">
-            <FaCheckCircle className="text-success me-3" />
-            <CiMenuKebab className="text-muted" />
-          </div>
-        </ListGroup.Item>
-
-        <ListGroup.Item
-          as="li"
-          className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
-        >
-          <div className="d-flex align-items-center me-3">
-            <FaGripVertical className="text-secondary" />
-            <LuNotebookPen className="text-success ms-2" />
-          </div>
-          <div className="flex-grow-1">
-            <div className="fw-bold ps-1"><a href="#/Kambaz/Courses/1234/Assignments/123"
-             className="wd-assignment-link text-black text-decoration-none" >A2</a></div>  
-            <div className="small text-muted ps-1">
-              <span className="text-danger">Multiple Modules</span> |{' '}
-              <strong>Not available until</strong> May 13 at 12:00am<br/>
-              <strong>Due</strong> May 20 at 11:59pm | 100 pts
+            <div className="flex-grow-1">
+              <div className="fw-bold ps-1"> 
+                <a href={`#/Kambaz/Courses/${assignment.course}/Assignments/${assignment._id}`} className="wd-assignment-link text-black text-decoration-none" > {assignment.title}</a></div>
+              <div className="small text-muted ps-1">
+                <span className="text-danger">Multiple Modules</span> |{' '}
+                <strong>{(new Date(assignment.startDate)<=new Date())?'Start Date':'Not available until'}</strong> {new Date(assignment.startDate).toLocaleString('en-us', { day :"numeric", month:"short", hour: 'numeric', minute: 'numeric', hour12: true})} | <br/>
+                <strong>Due</strong> {new Date(assignment.dueDate).toLocaleString('en-us', { day :"numeric", month:"short", hour: 'numeric', minute: 'numeric', hour12: true})} | {assignment.points} pts
+              </div>
             </div>
-          </div>
-          <div className="d-flex align-items-center">
-            <FaCheckCircle className="text-success me-3" />
-            <CiMenuKebab className="text-muted" />
-          </div>
-        </ListGroup.Item>
-
-        <ListGroup.Item
-          as="li"
-          className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3"
-        >
-          <div className="d-flex align-items-center me-3">
-            <FaGripVertical className="text-secondary" />
-            <LuNotebookPen className="text-success ms-2" />
-          </div>
-          <div className="flex-grow-1">
-            <div className="fw-bold ps-1"><a href="#/Kambaz/Courses/1234/Assignments/123"
-             className="wd-assignment-link text-black text-decoration-none" >A3</a></div>
-            <div className="small text-muted ps-1">
-              <span className="text-danger">Multiple Modules</span> |{' '}
-              <strong>Not available until</strong> May 20 at 12:00am<br/>
-              <strong>Due</strong> May 27 at 11:59pm | 100 pts
+            <div className="d-flex align-items-center">
+              <FaCheckCircle className="text-success me-3" />
+              <CiMenuKebab className="text-muted" />
             </div>
-          </div>
-          <div className="d-flex align-items-center">
-            <FaCheckCircle className="text-success me-3" />
-            <CiMenuKebab className="text-muted" />
-          </div>
-        </ListGroup.Item>
-
-
+          </ListGroup.Item>
+        ))}
       </ListGroup>
     </div>
   );
