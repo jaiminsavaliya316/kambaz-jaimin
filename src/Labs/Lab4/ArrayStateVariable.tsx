@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Row, Col } from "react-bootstrap";
 export default function ArrayStateVariable() {
  const [array, setArray] = useState([1, 2, 3, 4, 5]);
  const addElement = () => {
@@ -10,11 +11,12 @@ export default function ArrayStateVariable() {
  return (
   <div id="wd-array-state-variables">
    <h2>Array State Variable</h2>
-   <button onClick={addElement}>Add Element</button>
-   <ul>
+   <button className="btn btn-success" onClick={addElement}>Add Element</button>
     {array.map((item, index) => (
-     <li key={index}> {item}
-      <button onClick={() => deleteElement(index)}>
+     <Row key={index}> 
+      <Col className="text-start">{item}
+      <button className="mx-5 my-1 btn btn-danger" onClick={() => deleteElement(index)}>
        Delete</button>
-     </li>))}
-   </ul><hr/></div>);}
+      </Col>
+     </Row>))}
+    <hr/></div>);}
