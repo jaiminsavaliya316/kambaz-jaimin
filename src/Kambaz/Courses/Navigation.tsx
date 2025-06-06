@@ -6,8 +6,8 @@ export default function CourseNavigation() {
   const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades", "People"];
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
-      {links.map((linkItem) => (
-        <Link to={`/Kambaz/Courses/${cid}/${linkItem} `} id={`wd-course-${linkItem}-link`}
+      {links.map((linkItem, itemId) => (
+        <Link to={`/Kambaz/Courses/${cid}/${linkItem} `} id={`wd-course-${linkItem}-link`} key={itemId}
         className={`list-group-item border border-0 ${pathname.includes(`${linkItem}`)?"active":"text-danger"}`}> {linkItem} 
         </Link>
       ))}
