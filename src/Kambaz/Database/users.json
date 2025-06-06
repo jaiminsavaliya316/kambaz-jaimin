@@ -124,5 +124,19 @@
     "section": "S101",
     "lastActivity": "1852-11-27",
     "totalActivity": "21:32:43"
+  },
+  {
+  "_id": "999",
+  "username": "web_slinger",
+  "password": "parker123",
+  "firstName": "Peter",
+  "lastName": "Parker",
+  "email": "peter@spiderman.com",
+  "dob": "2001-08-10",
+  "role": "STUDENT",
+  "loginId": "001234570S",
+  "section": "S101",
+  "lastActivity": "2020-12-05",
+  "totalActivity": "18:45:22"
   }
 ]
