@@ -1,12 +1,50 @@
 import { Form, Button, Row, Col, InputGroup } from 'react-bootstrap';
 import { FaCalendarAlt, FaTimes } from 'react-icons/fa';
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
 import * as db from "../../Database";
 import "./styles.css";
+import { addAssignment, updateAssignment} from './reducer';
+import { useState } from 'react';
 
 export default function AssignmentEditor() {
-  const { aid } = useParams();
-  const assignment = db.assignments.find((assignment)=>(assignment._id === aid));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { aid, cid } = useParams();
+  
+  const dummyAssignment = { 
+    "_id": 'R'+uuidv4(), 
+    "points": "100", 
+    "title": "Please add title", 
+    "course": cid, 
+    "startDate": "2025-05-30T00:00", 
+    "dueDate": "2025-06-10T23:59", 
+    "description": "Enter the description of this assignment"
+  };
+  
+  const [assignment, setAssignment] = useState(
+    aid === 'new' 
+      ? dummyAssignment 
+      : db.assignments.find((assignment) => assignment._id === aid) || dummyAssignment
+  );
+
+  // Handler for updating assignment fields
+  const handleInputChange = (field: string, value: string) => {
+    setAssignment(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSave = () => {
+    aid === 'new'?
+      dispatch(addAssignment(assignment)):
+      dispatch(updateAssignment(assignment));
+    navigate(`/Kambaz/Courses/${cid}/Assignments`);
+  };
+
+  const handleCancel = () => {
+    navigate(`/Kambaz/Courses/${cid}/Assignments`);
+  };
+
   return (
     <div id="wd-assignments-editor" className="p-4">
       <Form>
@@ -15,7 +53,8 @@ export default function AssignmentEditor() {
           <Form.Control
             type="text"
             id="wd-name"
-            defaultValue={assignment?.title}
+            value={assignment?.title || ''}
+            onChange={(e) => handleInputChange('title', e.target.value)}
           />
         </Form.Group>
 
@@ -24,7 +63,8 @@ export default function AssignmentEditor() {
             as="textarea"
             rows={6}
             id="wd-description"
-            defaultValue={assignment?.description}
+            value={assignment?.description || ''}
+            onChange={(e) => handleInputChange('description', e.target.value)}
             className="border-0 bg-light"
           />
         </Form.Group>
@@ -37,7 +77,8 @@ export default function AssignmentEditor() {
             <Form.Control
               type="number"
               id="wd-points"
-              defaultValue={assignment?.points}
+              value={assignment?.points || ''}
+              onChange={(e) => handleInputChange('points', e.target.value)}
               style={{ maxWidth: '200px' }}
             />
           </Col>
@@ -48,7 +89,11 @@ export default function AssignmentEditor() {
             <Form.Label htmlFor="wd-group" className="pt-2">Assignment Group</Form.Label>
           </Col>
           <Col md={9}>
-            <Form.Select id="wd-group" defaultValue="ASSIGNMENTS" style={{ maxWidth: '300px' }}>
+            <Form.Select 
+              id="wd-group" 
+              defaultValue="ASSIGNMENTS"
+              style={{ maxWidth: '300px' }}
+            >
               <option value="ASSIGNMENTS">ASSIGNMENTS</option>
               <option value="LAB">Lab</option>
               <option value="QUIZ">Quiz</option>
@@ -61,7 +106,11 @@ export default function AssignmentEditor() {
             <Form.Label htmlFor="wd-display-grade-as" className="pt-2">Display Grade as</Form.Label>
           </Col>
           <Col md={9}>
-            <Form.Select id="wd-display-grade-as" defaultValue="Percentage" style={{ maxWidth: '300px' }}>
+            <Form.Select 
+              id="wd-display-grade-as" 
+              defaultValue="Percentage"
+              style={{ maxWidth: '300px' }}
+            >
               <option value="Percentage">Percentage</option>
               <option value="GPA">GPA</option>
               <option value="Points">Points</option>
@@ -74,7 +123,11 @@ export default function AssignmentEditor() {
             <Form.Label htmlFor="wd-submission-type" className="pt-2">Submission Type</Form.Label>
           </Col>
           <Col md={9}>
-            <Form.Select id="wd-submission-type" defaultValue="Online" style={{ maxWidth: '300px' }}>
+            <Form.Select 
+              id="wd-submission-type" 
+              defaultValue="Online"
+              style={{ maxWidth: '300px' }}
+            >
               <option value="Online">Online</option>
               <option value="Exam">Exam</option>
               <option value="Viva">Viva</option>
@@ -120,11 +173,11 @@ export default function AssignmentEditor() {
                   <Form.Control
                     type="datetime-local"
                     id="wd-due-date"
-                    defaultValue={assignment?.dueDate}
+                    value={assignment?.dueDate || ''}
+                    onChange={(e) => handleInputChange('dueDate', e.target.value)}
                   />
                   <InputGroup.Text 
                     className="bg-white border-start-0" 
-                    
                     onClick={() => {
                       const input = document.getElementById('wd-due-date') as HTMLInputElement;
                       input?.showPicker();
@@ -143,11 +196,11 @@ export default function AssignmentEditor() {
                       <Form.Control
                         type="datetime-local"
                         id="wd-available-from"
-                        defaultValue={assignment?.startDate}
+                        value={assignment?.startDate || ''}
+                        onChange={(e) => handleInputChange('startDate', e.target.value)}
                       />
                       <InputGroup.Text 
                         className="bg-white border-start-0" 
-                        
                         onClick={() => {
                           const input = document.getElementById('wd-available-from') as HTMLInputElement;
                           input?.showPicker();
@@ -165,11 +218,11 @@ export default function AssignmentEditor() {
                       <Form.Control
                         type="datetime-local"
                         id="wd-available-until"
-                        defaultValue={assignment?.dueDate}
+                        value={assignment?.dueDate || ''}
+                        onChange={(e) => handleInputChange('dueDate', e.target.value)}
                       />
                       <InputGroup.Text 
                         className="bg-white border-start-0" 
-                        
                         onClick={() => {
                           const input = document.getElementById('wd-available-until') as HTMLInputElement;
                           input?.showPicker();
@@ -188,19 +241,21 @@ export default function AssignmentEditor() {
         <hr />
         
         <div className="d-flex justify-content-end gap-2">
-          <Button
-            variant="outline-secondary"
-            type="button"
+          <Button 
+            variant="outline-secondary" 
+            type="button" 
             id="wd-cancel"
-          >
-            Cancel
+            onClick={handleCancel}
+          > 
+            Cancel 
           </Button>
-          <Button
-            variant="danger"
-            type="button"
-            id="wd-save"
-          >
-            Save
+          <Button 
+            variant="danger" 
+            type="button" 
+            id="wd-save" 
+            onClick={handleSave}
+          > 
+            Save 
           </Button>
         </div>
       </Form>

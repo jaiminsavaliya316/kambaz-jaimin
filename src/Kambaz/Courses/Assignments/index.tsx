@@ -1,14 +1,17 @@
 import { InputGroup, FormControl, Button, ListGroup } from 'react-bootstrap';
 import { CiMenuKebab } from 'react-icons/ci';
-import { FaSearch, FaPlus, FaCheckCircle } from 'react-icons/fa';
+import { FaSearch, FaPlus, FaCheckCircle, FaTrash } from 'react-icons/fa';
 import { FaChevronDown, FaGripVertical } from 'react-icons/fa6';
 import { LuNotebookPen } from 'react-icons/lu';
-import { useParams } from "react-router";
-import * as db from "../../Database";
+import {  useNavigate, useParams } from "react-router";
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteAssignment} from './reducer';
 
 export default function Assignments() {
   const { cid } = useParams();
-  const assignments = db.assignments;
+  const {assignments} = useSelector((state: any) => state.assignmentreducer);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div id="wd-assignments" className="p-3">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -24,7 +27,9 @@ export default function Assignments() {
           <Button variant="outline-secondary" className="me-2">
             <FaPlus className="me-1" /> Group
           </Button>
-          <Button variant="danger">
+          <Button 
+            variant="danger" 
+            onClick={()=>navigate(`/Kambaz/Courses/${cid}/Assignments/new`)}>
             <FaPlus className="me-1" /> Assignment
           </Button>
         </div>
@@ -67,6 +72,7 @@ export default function Assignments() {
               </div>
             </div>
             <div className="d-flex align-items-center">
+              <FaTrash className="text-danger me-2 mb-1" onClick={() => dispatch(deleteAssignment(assignment))}/>
               <FaCheckCircle className="text-success me-3" />
               <CiMenuKebab className="text-muted" />
             </div>
