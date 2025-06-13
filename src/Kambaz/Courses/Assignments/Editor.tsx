@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import * as db from "../../Database";
 import "./styles.css";
 import { addAssignment, updateAssignment} from './reducer';
+import { addAssignmentToServer, updateAssignmentInServer } from './client'
 import { useState } from 'react';
 
 export default function AssignmentEditor() {
@@ -34,10 +35,14 @@ export default function AssignmentEditor() {
     setAssignment(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSave = () => {
-    aid === 'new'?
-      dispatch(addAssignment(assignment)):
-      dispatch(updateAssignment(assignment));
+  const handleSave = async() => {
+    if (aid === 'new'){
+      const status = await addAssignmentToServer(assignment);
+      status && dispatch(addAssignment(assignment));
+    }else{
+      const status = await updateAssignmentInServer(assignment);
+      status && dispatch(updateAssignment(assignment));
+    }
     navigate(`/Kambaz/Courses/${cid}/Assignments`);
   };
 

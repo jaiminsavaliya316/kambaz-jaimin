@@ -5,13 +5,29 @@ import { FaChevronDown, FaGripVertical } from 'react-icons/fa6';
 import { LuNotebookPen } from 'react-icons/lu';
 import {  useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteAssignment} from './reducer';
+import { deleteAssignment, setAssignment} from './reducer';
+import { findAssignmentForCourse } from '../client';
+import { deleteAssignmentFromServer } from './client'
+import { useEffect } from 'react';
 
 export default function Assignments() {
   const { cid } = useParams();
   const {assignments} = useSelector((state: any) => state.assignmentreducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const fetchCourseAssignment = async (courseId:any) => {
+    const assignments = await findAssignmentForCourse(courseId);
+    dispatch(setAssignment(assignments))
+  };
+
+  const handleAssignementDelete = async(assignmentId:any) => {
+    console.log(assignmentId)
+    const status = await deleteAssignmentFromServer(assignmentId);
+    status && dispatch(deleteAssignment(assignmentId));
+  };
+  useEffect(() => {fetchCourseAssignment(cid);}, []);
+
   return (
     <div id="wd-assignments" className="p-3">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -56,7 +72,9 @@ export default function Assignments() {
       </div>
 
       <ListGroup as="ul" variant="flush">
-        {assignments.filter((assignment: any) => assignment.course === cid).map((assignment: any) => (
+        {assignments
+        // .filter((assignment: any) => assignment.course === cid)
+        .map((assignment: any) => (
           <ListGroup.Item as="li" className="d-flex align-items-center border-0 border-start border-4 border-success ps-3 py-3">
             <div className="d-flex align-items-center me-3">
               <FaGripVertical className="text-secondary" />
@@ -72,7 +90,7 @@ export default function Assignments() {
               </div>
             </div>
             <div className="d-flex align-items-center">
-              <FaTrash className="text-danger me-2 mb-1" onClick={() => dispatch(deleteAssignment(assignment))}/>
+              <FaTrash className="text-danger me-2 mb-1" onClick={() => handleAssignementDelete(assignment._id)}/>
               <FaCheckCircle className="text-success me-3" />
               <CiMenuKebab className="text-muted" />
             </div>

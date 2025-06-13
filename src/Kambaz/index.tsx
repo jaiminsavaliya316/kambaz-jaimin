@@ -8,33 +8,18 @@ import Courses from "./Courses";
 import "./styles.css";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCourses } from "./Courses/reducer";
 export default function Kambaz() {
-  const [courses, setCourses] = useState<any[]>([]);
+  const courses = {};
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const dispatch = useDispatch();
 
-  // const deleteCourse = async (courseId: string) => {
-  //     const status = await courseClient.deleteCourse(courseId);
-  //     setCourses(courses.filter((course) => course._id !== courseId));
-  // };
-
-  // const updateCourse = async (course:any) => {
-  //   await courseClient.updateCourse(course);
-  //   setCourses(courses.map((c) => {
-  //       if (c._id === course._id) { return course; }
-  //       else { return c; }
-  //   })
-  // );};
-
-  // const addNewCourse = async (course:any) => {
-  //   const newCourse = await userClient.createCourse(course);
-  //   setCourses([ ...courses, newCourse ]);
-  // };
   const fetchCourses = async () => {
     try {
       const courses = await userClient.findMyCourses();
-      setCourses(courses);
+      dispatch(setCourses(courses));
     } catch (error) {
       console.error(error);
     }
