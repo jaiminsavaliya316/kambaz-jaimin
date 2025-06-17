@@ -9,6 +9,7 @@ export default function Users() {
  const [role, setRole] = useState("");
   const [name, setName] = useState("");
   const createUser = async () => {
+    console.log(name);
     const user = await client.createUser({
       firstName: "New",
       lastName: `User${users.length + 1}`,
