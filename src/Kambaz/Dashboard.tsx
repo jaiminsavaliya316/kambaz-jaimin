@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Row, Col, Card, Button, FormControl } from "react-bootstrap";
-import { addNewCourse, deleteCourse, updateCourse, enroll, unenroll, setCourses } from "./Courses/reducer";
+import { addNewCourse, deleteCourse, updateCourse, setCourses } from "./Courses/reducer";
 import * as courseClient from "./Courses/client";
 import * as userClient from "./Account/client";
 import { useEffect, useState } from "react";
