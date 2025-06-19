@@ -3,17 +3,17 @@ import { FaCalendarAlt, FaTimes } from 'react-icons/fa';
 import { useNavigate, useParams } from "react-router";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
-import * as db from "../../Database";
+// import * as db from "../../Database";
 import "./styles.css";
 import { addAssignment, updateAssignment} from './reducer';
-import { addAssignmentToServer, updateAssignmentInServer } from './client'
-import { useState } from 'react';
+import { addAssignmentToServer, updateAssignmentInServer, findAssignmentById } from './client'
+import { useEffect, useState } from 'react';
 
 export default function AssignmentEditor() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { aid, cid } = useParams();
-  
+
   const dummyAssignment = { 
     "_id": 'R'+uuidv4(), 
     "points": "100", 
@@ -24,13 +24,24 @@ export default function AssignmentEditor() {
     "description": "Enter the description of this assignment"
   };
   
-  const [assignment, setAssignment] = useState(
-    aid === 'new' 
-      ? dummyAssignment 
-      : db.assignments.find((assignment) => assignment._id === aid) || dummyAssignment
-  );
+  const [assignment, setAssignment] = useState(dummyAssignment);
 
-  // Handler for updating assignment fields
+  const setupAssignmentState = async () => {
+    if (aid === 'new') {
+      setAssignment(dummyAssignment);
+    }else{
+      const assignmentData = await findAssignmentById(aid || '');
+      if (assignmentData) {
+        setAssignment(assignmentData);
+      } else {
+        setAssignment(dummyAssignment);
+      }
+    }
+  }
+  useEffect(() => {
+    setupAssignmentState();
+  }, []);
+
   const handleInputChange = (field: string, value: string) => {
     setAssignment(prev => ({ ...prev, [field]: value }));
   };
@@ -40,8 +51,10 @@ export default function AssignmentEditor() {
       const status = await addAssignmentToServer(assignment);
       status && dispatch(addAssignment(assignment));
     }else{
-      const status = await updateAssignmentInServer(assignment);
-      status && dispatch(updateAssignment(assignment));
+      const updatedAssignment = { ...assignment, _id: aid };
+      // Update the assignment in the database
+      const status = await updateAssignmentInServer(updatedAssignment);
+      status && dispatch(updateAssignment(updatedAssignment));
     }
     navigate(`/Kambaz/Courses/${cid}/Assignments`);
   };
