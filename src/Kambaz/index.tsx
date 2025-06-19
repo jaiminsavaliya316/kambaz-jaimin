@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router";
-import * as userClient from "./Account/client";
+// import * as userClient from "./Account/client";
 // import * as courseClient from "./Courses/client";
 import Account from "./Account";
 import Dashboard from "./Dashboard";
@@ -9,6 +9,7 @@ import "./styles.css";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
 import { useEffect } from "react";
+import * as courseClient from "./Courses/client";
 import { useDispatch, useSelector } from "react-redux";
 import { setCourses } from "./Courses/reducer";
 export default function Kambaz() {
@@ -18,7 +19,7 @@ export default function Kambaz() {
 
   const fetchCourses = async () => {
     try {
-      const courses = await userClient.findMyCourses();
+      const courses = await courseClient.fetchAllCourses();
       dispatch(setCourses(courses));
     } catch (error) {
       console.error(error);
