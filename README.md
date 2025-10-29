@@ -58,6 +58,7 @@ A complete LMS featuring:
 ## 📸 Screenshots
 
 [Add 2-3 screenshots of key interfaces]
+![Dashboard](./public/images/Kambaz2dashboard.png)
 
 ## 🚀 Running Locally
 
