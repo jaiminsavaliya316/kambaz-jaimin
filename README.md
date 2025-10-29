@@ -59,7 +59,7 @@ A complete LMS featuring:
 
 [Add 2-3 screenshots of key interfaces]
 ![Dashboard](./public/images/Kambaz2dashboard.png)
-![Course](./public/images/Kambaz3course view.png)
+![Course](./public/images/Kambaz3courseview.png)
 ![Assignments](./public/images/Kambaz3assignmentviews.png)
 ![Assignment](./public/images/Kambaz5assignmentcrud.png)
 
