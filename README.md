@@ -58,14 +58,19 @@ A complete LMS featuring:
 ## 📸 Screenshots
 
 [Add 2-3 screenshots of key interfaces]
+Dashboard
 ![Dashboard](./public/images/Kambaz2dashboard.png)
+Course (Default Modules view)
 ![Course](./public/images/Kambaz3courseview.png)
+Assignment list view
 ![Assignments](./public/images/Kambaz3assignmentviews.png)
+Assignment view
 ![Assignment](./public/images/Kambaz5assignmentcrud.png)
 
 ## 🚀 Running Locally
 
-### Backend
+### Backend 
+**Backend Repo:**[https://github.com/jaiminsavaliya316/kambaz-server-jaimin]
 ```bash
 cd kambaz-server-jaimin
 npm install
@@ -82,7 +87,6 @@ npm run dev
 
 ## 🔗 Links
 
-- **Live Demo:** [URL]
 - **Frontend Repo:** [URL]
 - **Backend Repo:** [URL]
 
