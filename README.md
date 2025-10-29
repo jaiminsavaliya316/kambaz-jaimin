@@ -1,54 +1,95 @@
-# React + TypeScript + Vite
+# Kambaz - Canvas LMS Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-18-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Node.js](https://img.shields.io/badge/Node.js-20-green)
 
-Currently, two official plugins are available:
+> A full-stack Learning Management System built to understand the architecture behind educational platforms like Canvas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 What I Built
 
-## Expanding the ESLint configuration
+A complete LMS featuring:
+- 📚 Course management with hierarchical structure
+- 📝 Assignment creation and submission
+- 👥 Role-based access control (Faculty vs Students)
+- 🔐 Session-based authentication
+- 📊 User enrollment and management
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+**Frontend**
+- React 18 with TypeScript
+- Vite for build tooling
+- Modern component architecture
+
+**Backend**
+- Node.js with Express 5
+- MongoDB with Mongoose ODM
+- Session management with express-session
+- RESTful API design
+
+**Deployment**
+- Frontend: Netlify
+- Backend: Render
+- Database: MongoDB Atlas
+
+## 💡 What I Learned
+
+- Building complex hierarchical data structures (courses → modules → assignments)
+- Implementing role-based access control from scratch
+- Managing authentication state across distributed systems
+- Coordinating deployment across multiple platforms
+- Full-stack TypeScript development best practices
+
+## 🎯 Key Features
+
+### For Faculty
+- Create and manage courses
+- Add modules and assignments
+- Manage student enrollments
+- View student submissions
+
+### For Students
+- Browse available courses
+- View assignments and due dates
+- Submit coursework
+- Track progress
+
+## 📸 Screenshots
+
+[Add 2-3 screenshots of key interfaces]
+
+## 🚀 Running Locally
+
+### Backend
+```bash
+cd kambaz-server-jaimin
+npm install
+# Create .env file (see .env.example)
+npm start
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Frontend
+```bash
+cd kambaz-jaimin
+npm install
+npm run dev
 ```
+
+## 🔗 Links
+
+- **Live Demo:** [URL]
+- **Frontend Repo:** [URL]
+- **Backend Repo:** [URL]
+
+## 📝 Project Context
+
+Built as a full-stack portfolio project to demonstrate:
+- MERN stack proficiency
+- Complex state management
+- Role-based authorization
+- Cloud deployment skills
+
+---
+
+**💼 Want to see more of my work?** Check out my [portfolio](link) or connect on [LinkedIn](link).
