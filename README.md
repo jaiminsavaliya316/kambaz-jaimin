@@ -70,7 +70,7 @@ Assignment view
 
 ### Backend 
 
-[Backend Repo]([https://your-url-here.com](https://github.com/jaiminsavaliya316/kambaz-server-jaimin))
+[Backend Repo](https://github.com/jaiminsavaliya316/kambaz-server-jaimin)
 ```bash
 cd kambaz-server-jaimin
 npm install
