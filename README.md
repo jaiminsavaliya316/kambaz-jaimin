@@ -8,7 +8,7 @@
 
 ## 📋 What I Built
 
-A complete LMS featuring:
+The LMS featuring:
 - 📚 Course management with hierarchical structure
 - 📝 Assignment creation and submission
 - 👥 Role-based access control (Faculty vs Students)
@@ -52,8 +52,7 @@ A complete LMS featuring:
 ### For Students
 - Browse available courses
 - View assignments and due dates
-- Submit coursework
-- Track progress
+- Submit answers
 
 ## 📸 Screenshots
 
@@ -87,12 +86,12 @@ npm run dev
 
 ## 🔗 Links
 
-- **Frontend Repo:** [URL]
-- **Backend Repo:** [URL]
+- **Frontend Repo:** [kambaz-jaimin](https://github.com/jaiminsavaliya316/kambaz-jaimin)
+- **Backend Repo:** [kambaz-server-jaimin](https://github.com/jaiminsavaliya316/kambaz-server-jaimin)
 
 ## 📝 Project Context
 
-Built as a full-stack portfolio project to demonstrate:
+Built as a full-stack project to demonstrate:
 - MERN stack proficiency
 - Complex state management
 - Role-based authorization
@@ -100,4 +99,4 @@ Built as a full-stack portfolio project to demonstrate:
 
 ---
 
-**💼 Want to see more of my work?** Check out my [portfolio](link) or connect on [LinkedIn](link).
+Check out my [portfolio](https://jaiminsavaliya316.github.io) or connect on [LinkedIn](https://www.linkedin.com/in/jaimin-savaliya).
